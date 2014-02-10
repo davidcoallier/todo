@@ -3,9 +3,18 @@ sudo! "apt-get -y upgrade"
 sudo! "apt-get -y install uwsgi uwsgi-plugin-python build-essential"
 sudo! "apt-get -y install python-pip python-setuptools"
 sudo! "rm -rf /etc/uwsgi/*"
-sudo! "mkdir /var/run/uwsgi"
-sudo "mkdir /var/log/uwsgi"
-sudo! "mkdir -p /var/www/fraud-api"
+
+if not File.directory?('/var/run/uwsgi')
+  sudo! "mkdir /var/run/uwsgi"
+end
+
+if not File.directory?('/var/log/uwsgi')
+  sudo! "mkdir /var/log/uwsgi"
+end
+
+if not File.directory?('/var/www/fraud-api')
+  sudo! "mkdir -p /var/www/fraud-api"
+end
 
 appname_yaml =<<eos
 uwsgi:
