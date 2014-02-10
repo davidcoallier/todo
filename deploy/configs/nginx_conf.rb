@@ -1,6 +1,6 @@
 nginx_block =<<eos
 server {
-    listen      8080;
+    listen      80;
     server_name  _;
     
     error_log /var/log/nginx/appname-error.log;

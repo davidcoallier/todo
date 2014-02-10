@@ -12,8 +12,9 @@ uwsgi:
     gid: nogroup
     pidfile: /var/run/uwsgi/appname.pid
     socket: /tmp/appname.sock
-    pp: /var/www/appname/
-    chdir: /var/www/appname
+    chmod-socket: 777
+    pp: /var/www/fraud-api/
+    chdir: /var/www/fraud-api
     plugins: python
 eos
 
