@@ -49,5 +49,5 @@ end
 
 sudo! "chown -R www-data /var/run/uwsgi /var/log/uwsgi /var/www"
 sudo! "chmod -R 766 /var/run/uwsgi /var/log/uwsgi /var/www"
-sudo! "service uwsgi start"
-sudo! "service nginx restart"
+sudo "service uwsgi start"
+sudo "service nginx restart"
