@@ -29,13 +29,19 @@ if File.exists?("/etc/nginx/sites-enabled/app_#{config.app}.conf")
   sudo! "rm -rf /etc/nginx/sites-enabled/app_#{config.app}.conf"
 end
 
-if not File.directory?("/var/www/fraud-api/.git")
-  sudo! "cd /var/www/fraud-api && git clone https://github.com/davidcoallier/howto-flask.git"
-  sudo! "cd /var/www/fraud-api && mv howto-flask/* . && mv howto-flask/.git ."
+bash_script =<<bash
+cd /var/www/fraud-api;
+
+if [ ! -d /var/www/fraud-api/.git ]; then
+  git clone https://github.com/davidcoallier/howto-flask.git
+  mv howto-flask/* .
+  mv howto-flask/.git .git
 else
-  # This just happened.
-  sudo! "cd /var/www/fraud-api && git pull origin master"
-end
+  git pull origin master
+fi
+bash
+
+sudo bash_script
 
 if File.exists?("/var/www/fraud-api/requirements.txt")
   sudo "cd /var/www/fraud-api && pip install -r requirements.txt"
