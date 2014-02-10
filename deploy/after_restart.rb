@@ -1,6 +1,4 @@
-print Dir.entries("/etc/nginx")
-exit!
-
+puts Dir.entries("/etc/nginx")
 sudo! "apt-get update"
 sudo! "apt-get -y upgrade"
 sudo! "apt-get -y install uwsgi uwsgi-plugin-python build-essential"
