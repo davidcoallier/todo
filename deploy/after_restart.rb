@@ -25,7 +25,7 @@ sudo! "ruby #{config.release_path}/deploy/configs/appname_yaml.rb"
 sudo! "ruby #{config.release_path}/deploy/configs/uwsgi_conf.rb"
 sudo! "ruby #{config.release_path}/deploy/configs/nginx_conf.rb"
 
-sudo! "git clone https://github.com/davidcoallier/howto-flask.git /var/www/fraud-api"
+sudo! "cd /var/www/fraud-api && git clone https://github.com/davidcoallier/howto-flask.git"
 
 if File.exists?("/var/www/fraud-api/requirements.txt")
   sudo! "cd /var/www/fraud-api && pip install -r requirements.txt"
