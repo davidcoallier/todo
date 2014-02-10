@@ -20,9 +20,9 @@ if not File.directory?('/var/www/fraud-api')
   sudo! "mkdir -p /var/www/fraud-api"
 end
 
-sudo "ruby #{release_path}/deploy/config/appname_yaml.rb"
-sudo "ruby #{release_path}/deploy/config/uwsgi_conf.rb"
-sudo "ruby #{release_path}/deploy/config/nginx_conf.rb"
+sudo! "ruby #{config.release_path}/deploy/configs/appname_yaml.rb"
+sudo! "ruby #{config.release_path}/deploy/configs/uwsgi_conf.rb"
+sudo! "ruby #{config.release_path}/deploy/configs/nginx_conf.rb"
 
 sudo! "git clone https://github.com/davidcoallier/howto-flask.git /var/www/fraud-api"
 
@@ -30,6 +30,7 @@ if File.exists?("/var/www/fraud-api/requirements.txt")
   sudo! "cd /var/www/fraud-api && pip install -r requirements.txt"
 end
 
+puts "Hey dave... figured you'd read this. Good luck and keep chuggin'"
 sudo! "chown -R www-data /var/run/uwsgi /var/log/uwsgi /var/www"
 sudo! "chmod -R 766 /var/run/uwsgi /var/log/uwsgi /var/www"
 sudo! "service uwsgi start"
