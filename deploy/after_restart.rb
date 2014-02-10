@@ -31,6 +31,7 @@ end
 
 if not File.directory?("/var/www/fraud-api/.git")
   sudo! "cd /var/www/fraud-api && git clone https://github.com/davidcoallier/howto-flask.git"
+  sudo! "cd /var/www/fraud-api && mv howto-flask/* . && mv howto-flask/.git ."
 else
   # This just happened.
   sudo! "cd /var/www/fraud-api && git pull origin master"
