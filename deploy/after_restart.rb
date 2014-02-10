@@ -37,6 +37,7 @@ if [ ! -d /var/www/fraud-api/.git ]; then
   mv howto-flask/* .
   mv howto-flask/.git .git
 else
+  git reset --hard
   git pull origin master
 fi
 bash
