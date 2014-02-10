@@ -20,6 +20,6 @@ server {
 }
 eos
 
-File.open('/etc/nginx/sites-enabled/fraudapi.conf') do |f|
+File.open('/etc/nginx/sites-enabled/fraudapi.conf', 'w+') do |f|
   f.puts nginx_block
 end
