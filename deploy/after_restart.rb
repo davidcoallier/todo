@@ -38,7 +38,7 @@ else
 end
 
 if File.exists?("/var/www/fraud-api/requirements.txt")
-  sudo! "cd /var/www/fraud-api && pip install -r requirements.txt"
+  sudo "cd /var/www/fraud-api && pip install -r requirements.txt"
 end
 
 sudo! "chown -R www-data /var/run/uwsgi /var/log/uwsgi /var/www"
